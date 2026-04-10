@@ -1,35 +1,28 @@
 /**
- * @param {string} s
- * @param {number} numRows
- * @return {string}
+ * @param {number} x
+ * @return {number}
  */
-var convert = function (s, numRows) {
-  if (numRows === 1) return s;
+var reverse = function (x) {
+  let stringNumber = String(x);
+  if (stringNumber[0] === "-") {
+    stringNumber = stringNumber.slice(1).split("").reverse();
+    stringNumber.unshift("-");
+    stringNumber = stringNumber.join("");
 
-  const arr = Array.from({ length: numRows }, () => []);
+    return isOutsideSigned32(+stringNumber);
+  } else {
+    stringNumber = stringNumber.split("").reverse().join("");
 
-  let flag = 1;
-  let index = 0;
-
-  for (let i = 0; i < s.length; i++) {
-    if (index === 0) {
-      flag = 1;
-      arr[index].push(s[i]);
-      index += flag;
-    } else if (index < arr.length - 1) {
-      arr[index].push(s[i]);
-      index += flag;
-    } else if ((index = arr.length - 1)) {
-      flag = -1;
-      arr[index].push(s[i]);
-      index += flag;
-    }
+    return isOutsideSigned32(+stringNumber);
   }
-
-  const result = arr.map((array) => array.join(""));
-  const finalResult = result.join("");
-
-  return finalResult;
 };
 
-console.log(convert("AB", 1));
+let bigNumber = 2 ** 31 - 1;
+
+function isOutsideSigned32(n) {
+  if (n < -bigNumber || n > bigNumber) {
+    return 0;
+  } else return n;
+}
+
+console.log(reverse(-123));
