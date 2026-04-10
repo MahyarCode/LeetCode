@@ -31,5 +31,3 @@ var convert = function (s, numRows) {
 
   return finalResult;
 };
-
-console.log(convert("AB", 1));
