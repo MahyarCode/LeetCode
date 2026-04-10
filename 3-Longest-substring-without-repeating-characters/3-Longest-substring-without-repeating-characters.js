@@ -11,19 +11,24 @@ var lengthOfLongestSubstring = function (s) {
   for (let i = 0; i < s.length; i++) {
     if (i !== 0) {
       input = input.slice(i);
-    } else continue;
+    }
 
     for (let j = 0; j < input.length; j++) {
       if (!str.includes(input[j])) {
-        str + input[j];
+        str += input[j];
       } else {
         result.push(str);
         str = "";
       }
     }
   }
+  let longestString = 0;
 
-  return result;
+  result.map((el) => {
+    if (el.length >= longestString) {
+      longestString = el.length;
+    }
+  });
+
+  return longestString;
 };
-
-console.log(lengthOfLongestSubstring("abca"));
