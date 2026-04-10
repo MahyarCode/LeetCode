@@ -36,5 +36,3 @@ function isOutsideSigned32(n) {
     return bigNumberPositive;
   } else return n;
 }
-
-console.log(myAtoi("   +0 123"));
