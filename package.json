@@ -1,0 +1,23 @@
+{
+  "name": "leetcode",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/MahyarCode/LeetCode#readme",
+  "bugs": {
+    "url": "https://github.com/MahyarCode/LeetCode/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MahyarCode/LeetCode.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
