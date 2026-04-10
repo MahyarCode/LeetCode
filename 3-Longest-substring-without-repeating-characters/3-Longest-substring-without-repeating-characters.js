@@ -8,9 +8,13 @@ var lengthOfLongestSubstring = function (s) {
 
   let input = s;
 
+  if (input.length === 1) {
+    return 1;
+  }
+
   for (let i = 0; i < s.length; i++) {
     if (i !== 0) {
-      input = input.slice(i);
+      input = input.slice(1);
     }
 
     for (let j = 0; j < input.length; j++) {
@@ -19,6 +23,7 @@ var lengthOfLongestSubstring = function (s) {
       } else {
         result.push(str);
         str = "";
+        break;
       }
     }
   }
