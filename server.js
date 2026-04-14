@@ -1,40 +1,28 @@
 /**
- * @param {string} s
+ * @param {number} x
  * @return {number}
  */
-var myAtoi = function (s) {
-  const input = s.trim().replaceAll(" ", "a");
-  let str = "";
-  let flag = "";
-  if (input[0] === "-" || input[0] === "+") {
-    flag += input[0];
-    str += input.slice(1);
-  } else str += input;
+var reverse = function (x) {
+  let stringNumber = String(x);
+  if (stringNumber[0] === "-") {
+    stringNumber = stringNumber.slice(1).split("").reverse();
+    stringNumber.unshift("-");
+    stringNumber = stringNumber.join("");
 
-  let index = 0;
-  let mainNumberString = "";
+    return isOutsideSigned32(+stringNumber);
+  } else {
+    stringNumber = stringNumber.split("").reverse().join("");
 
-  while (index <= str.length - 1) {
-    if (!isNaN(str[index])) {
-      mainNumberString += str[index];
-      index++;
-    } else break;
+    return isOutsideSigned32(+stringNumber);
   }
-
-  const result = mainNumberString.length > 0 ? `${flag}${mainNumberString}` : 0;
-
-  return +isOutsideSigned32(result);
 };
 
-let bigNumberPositive = 2 ** 31 - 1;
-let bigNumberNegative = 2 ** 31 * -1;
+let bigNumber = 2 ** 31 - 1;
 
 function isOutsideSigned32(n) {
-  if (n < bigNumberNegative) {
-    return bigNumberNegative;
-  } else if (n > bigNumberPositive) {
-    return bigNumberPositive;
+  if (n < -bigNumber || n > bigNumber) {
+    return 0;
   } else return n;
 }
 
-console.log(myAtoi("   +0 123"));
+console.log(reverse(-123));
